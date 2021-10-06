@@ -1,0 +1,36 @@
+@model GameViewModel
+
+<link rel="stylesheet" href="~/css/data-details.css" asp-append-version="true" />
+
+<div class="card mt-3">
+    <div class="card-body">
+        <div class="row">
+        <div class="col">
+            
+            <h3>Simply Rugby - @Model.Opposition <hr/></h3>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h6><strong>@Html.DisplayNameFor(m=>m.KO)</strong></h6>
+                    <p>
+                       @Html.DisplayFor(m=>m.Date)  @Html.DisplayFor(m=>m.KO) 
+                    </p>
+                    <h6><strong>@Html.DisplayNameFor(m=>m.Location)</strong></h6>
+                    <p>
+                        @Html.DisplayFor(m=>m.Location)
+                    </p>
+                    </div>
+                <div class="col-md-6">
+                    <h6><strong>@Html.DisplayNameFor(m=>m.Result)</strong></h6>
+                    <p>
+                        @Html.DisplayFor(m=>m.Result)
+                    </p>
+                    <h6><strong>Score</strong></h6>
+                    <p>
+                        @Html.DisplayFor(m=>m.SimpleRugbyPoints) : @Html.DisplayFor(m=>m.OppositionPoints)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>

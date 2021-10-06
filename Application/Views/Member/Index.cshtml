@@ -1,0 +1,47 @@
+@model List<MemberViewModel>
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="card">
+<div class="card-title text-center mt-4"><h4 class="">Member list</h4></div>
+<div class="card-body">
+
+<a asp-action="CreateUpdate" >Add new</a>
+<table id="MembersList" class="table mt-1">
+    <thead>
+    <tr>
+        <th>SRU</th>
+        <th>Full Name</th>
+        <th>Member type</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                <label>@item.SRU</label>
+            </td>
+            <td>
+                <label>@item.Name @item.Surname</label>
+            </td>
+            <td>
+                <label>@item.Type</label>
+            </td>
+           
+            <td class="text-right">
+                <a asp-action="CreateUpdate" asp-route-id="@item.SRU">Edit</a> |
+                <a href="@Url.Action("Details", new{sru = item.SRU})">Details</a> |
+                <a href="@Url.Action("Delete", new{sru = item.SRU})">Delete</a> |
+            </td>
+        </tr>
+    }
+    
+    </tbody>
+</table>
+
+</div>
+</div>

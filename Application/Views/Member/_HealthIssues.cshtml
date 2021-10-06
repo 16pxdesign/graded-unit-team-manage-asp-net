@@ -1,0 +1,19 @@
+@model PlayerViewModel
+
+
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h3 >Health Issues</h3>
+        <hr/>
+
+        <button type="button" class="btn btn-link" data-toggle="ajax-modal" data-url="@Url.Action("AddHealth")" ><i class="fas fa-plus"></i>  Add</button>
+
+        <!-- Health table -->
+        @await Html.PartialAsync("_HealthTable", Model)
+
+
+    </div>
+</div>
+
+<script src="~/js/modal-member-health.js" asp-append-version="true" defer></script>

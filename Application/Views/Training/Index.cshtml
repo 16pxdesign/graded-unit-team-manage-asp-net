@@ -1,0 +1,57 @@
+@using Application.Models
+@model List<TrainingViewModel>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="card">
+    <div class="card-title text-center mt-4"><h4 class="">Trainings list</h4></div>
+    <div class="card-body">
+
+        <a asp-action="Create" >Add new</a>
+        <table id="TrainingsList" class="table mt-1">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Coach</th>
+                <th>Location</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model) {
+                     <tr>
+                         <td>
+                             <label>@item.Date.ToString("dd/MM/yyyy")</label>           
+                         </td>
+                         <td>
+                             <label>@item.Time.ToString("HH:mm")</label>
+                         </td>
+                         <td>
+                             <label>@if(item.Coach!=null) {@item.Coach.Fullname}</label>
+                         </td>
+                         <td>
+                             <label>@item.Location</label>
+                         </td>
+                   
+           
+                         <td class="text-right">
+                             <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                             <a href="@Url.Action("Details","Training", new{id = item.Id})">Details</a> |
+                             <a href="@Url.Action("Delete","Training", new{id  = item.Id})">Delete</a> |
+                         </td>
+                     </tr>
+                 }
+            }
+           
+    
+            </tbody>
+        </table>
+
+    </div>
+</div>

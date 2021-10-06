@@ -1,0 +1,23 @@
+@model List<MemberViewModel>
+
+@if (Model != null && Model.Count > 0)
+{
+    <div class="card mt-3">
+        <div class="card-body">
+            @foreach (var item in Model)
+            {
+                <dl class="row">
+
+                    <dd class="col-sm-3">
+                        @item.Fullname
+                    </dd>
+
+                </dl>
+            }
+        </div>
+    </div>
+}
+else
+{
+    @("Nobody been attendant")
+}

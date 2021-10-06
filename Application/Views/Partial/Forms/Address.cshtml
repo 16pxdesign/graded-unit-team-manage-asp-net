@@ -1,0 +1,41 @@
+@model AddressViewModel
+
+
+<div class="card mt-4">
+    <div class="card-body">
+
+        <h3 >Address</h3>
+        <hr/>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+     
+                <label asp-for="Flat" class="control-label"></label>
+                <input asp-for="Flat" class="form-control" />
+                <span asp-validation-for="Flat" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="Street" class="control-label"></label>
+            <input asp-for="Street" class="form-control" />
+            <span asp-validation-for="Street" class="text-danger"></span>
+        </div>
+        
+    <div class="form-row">
+       
+        <div class="form-group col-md-4">
+            <label asp-for="Postcode" class="control-label"></label>
+            <input asp-for="Postcode" class="form-control" />
+            <span asp-validation-for="Postcode" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-8">
+            <label asp-for="City" class="control-label"></label>
+            <input asp-for="City" class="form-control" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        </div>
+
+
+    </div>
+</div>

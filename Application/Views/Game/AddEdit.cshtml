@@ -1,0 +1,63 @@
+@model GameViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+
+<link rel="stylesheet" href="~/css/Tabs.css" />
+
+<form id="GameForm" method="post">
+
+    
+    
+    <section id="tabs" class="project-tab">
+        <div class="container">
+            <div asp-validation-summary="All">
+        
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-Game-tab" data-toggle="tab" href="#nav-Game" role="tab" aria-controls="nav-Game" aria-selected="true">Game</a>
+                            <a class="nav-item nav-link" id="nav-Score-tab" data-toggle="tab" href="#nav-Score" role="tab" aria-controls="nav-Score" aria-selected="false"><label asp-for="Scores"></label></a>
+                        </div>
+                    </nav>
+                    <div class="tab-content p-2" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-Game" role="tabpanel" aria-labelledby="nav-Game-tab">
+                            @Html.EditorFor(m=>m,"~/Views/Partial/Forms/Game.cshtml")
+                        </div>
+                        <div class="tab-pane p-2 fade" id="nav-Score" role="tabpanel" aria-labelledby="nav-Score-tab">
+                            @await Html.PartialAsync("_Score",Model)
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mt-4">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-2">
+                            <input type="submit" class="btn btn-primary "  data-url="@Url.Action("Index")" id="GameSave"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-2">
+                            <a class="btn btn-link" asp-controller="Game" asp-action="Index">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+    
+</form>
+
+<!-- Modal placeholder -->
+<div id="modal-placeholder"></div>
+<script src="~/js/modal.js" asp-append-version="true" defer></script>
+<script src="~/js/modal-score.js" asp-append-version="true" defer></script>

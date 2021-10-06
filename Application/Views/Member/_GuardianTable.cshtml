@@ -1,0 +1,40 @@
+@model JuniorViewModel
+
+<table id="GuardianTable" class="table mt-1" data-url="@Url.Action("ModalFillTable")">
+    <thead>
+    <tr>
+        <th>Guardian</th>
+        <th>Signature Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+   
+    @for (var i = 0; i < Model.Guardians.Count; i++)
+    {
+        <tr>
+            <input name='Player.Junior.Guardians[@(i)].Id' type='hidden' value='@Model.Guardians[i].Id'/>
+            <td><input name='Player.Junior.Guardians[@(i)].Name' type='hidden' value='@Model.Guardians[i].Name'/>@Model.Guardians[i].Name @Model.Guardians[i].Surname</td>
+            <td style='display: none'><input name='Player.Junior.Guardians[@(i)].Surname' type='hidden' value='@Model.Guardians[i].Surname'/></td>
+            <td style='display: none'><input name='Player.Junior.Guardians[@(i)].Phone' type='hidden' value='@Model.Guardians[i].Phone'/></td>
+            <td style='display: none'><input name='Player.Junior.Guardians[@(i)].Relationship' type='hidden' value='@Model.Guardians[i].Relationship'/>@Model.Guardians[i].Relationship</td>
+            <td><input name='Player.Junior.Guardians[@(i)].Signature' type='hidden' value='@Model.Guardians[i].Signature'/>@Model.Guardians[i].Signature.ToString("dd/MM/yyyy")</td>
+            <td style='display: none'><input name='Player.Junior.Guardians[@(i)].Address.Flat' type='hidden' value='@Model.Guardians[i].Address.Flat'/></td>
+            <td style='display: none'><input name='Player.Junior.Guardians[@(i)].Address.Street' type='hidden' value='@Model.Guardians[i].Address.Street'/></td>
+            <td style='display: none'><input name='Player.Junior.Guardians[@(i)].Address.City' type='hidden' value='@Model.Guardians[i].Address.City'/></td>
+            <td style='display: none'><input name='Player.Junior.Guardians[@(i)].Address.Postcode' type='hidden' value='@Model.Guardians[i].Address.Postcode'/></td>
+
+
+            <!-- Buttons -->
+
+            <td><button type="button" id="Guardian[@(i)]_editBtn" class="btn btn-link" data-toggle="ajax-modal" data-url="@Url.Action("AddGuardian", new {id = i})"><i class="fas fa-edit"></i></button></td>
+            <td><button data-deleteid="@(i)" class='btn btn-link text-danger' data-toggle="GuardianDelete" data-url="@Url.Action("DeleteGuardian", "Member")"><i class='fas fa-trash-alt'></i></button></td>
+        </tr>
+    }
+    
+
+
+
+    </tbody>
+</table>

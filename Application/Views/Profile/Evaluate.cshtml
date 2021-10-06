@@ -1,0 +1,97 @@
+@model EvalutationViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/stars.css">
+
+<form method="post">
+    <div asp-validation-summary="All">
+        
+    </div>
+<div class="card">
+    <div class="card-title text-center mt-4">
+        @Html.HiddenFor(model => model.Player.SRU)
+        <h4 class="">@Model.Player.Fullname Scores</h4>
+    </div>
+    <div class="card-body">
+
+        
+            <table class="table mt-1">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Comment</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                @{ int i = 0; }
+                @foreach (var category in Model.Categories)
+                {
+                    
+                    
+                    <tr>
+                        <td colspan="3" class="bg-info">
+                            <label class="font-weight-bold">@category.Name</label>
+                        </td>
+                    </tr>
+                    
+                    foreach (var skill in Model.Skills.Where(x => x.ParentId == category.Id))
+                    {
+                        
+                
+                       
+                         <td>
+                             @skill.Name
+                         </td>
+                         <td>
+                             <fieldset class="rating">
+                                 <input type="radio" id="Scores[@(i)].Score5" @if(Model.Scores.Any(x => x.SkillId==skill.Id)){if(Model.Scores.Single(x => x.SkillId==skill.Id).Score==5){ @("checked = 'checked'")}} name="Scores[@(i)].Score" value="5"/><label for="Scores[@(i)].Score5" title="Outstanding!">5 stars</label>
+                                 <input type="radio" id="Scores[@(i)].Score4" @if(Model.Scores.Any(x => x.SkillId==skill.Id)){if(Model.Scores.Single(x => x.SkillId==skill.Id).Score==4){ @("checked = 'checked'")}} name="Scores[@(i)].Score" value="4"/><label for="Scores[@(i)].Score4" title="Pretty good">4 stars</label>
+                                 <input type="radio" id="Scores[@(i)].Score3" @if(Model.Scores.Any(x => x.SkillId==skill.Id)){if(Model.Scores.Single(x => x.SkillId==skill.Id).Score==3){ @("checked = 'checked'")}}  name="Scores[@(i)].Score" value="3"/><label for="Scores[@(i)].Score3" title="Good">3 stars</label>
+                                 <input type="radio" id="Scores[@(i)].Score2" @if(Model.Scores.Any(x => x.SkillId==skill.Id)){if(Model.Scores.Single(x => x.SkillId==skill.Id).Score==2){ @("checked = 'checked'")}} name="Scores[@(i)].Score" value="2"/><label for="Scores[@(i)].Score2" title="Poor">2 stars</label>
+                                 <input type="radio" id="Scores[@(i)].Score1" @if(Model.Scores.Any(x => x.SkillId==skill.Id)){if(Model.Scores.Single(x => x.SkillId==skill.Id).Score==1){ @("checked = 'checked'")}} name="Scores[@(i)].Score" value="1"/><label for="Scores[@(i)].Score1" title="Very Poor">1 star</label>
+                             </fieldset>
+                         </td>
+                         <td>
+                             @if (@Model.Scores.Any(x => x.SkillId == skill.Id))
+                             {
+                                
+                                 <input name='Scores[@(i)].Description' type='text' value="@(Model.Scores.Single(x => x.SkillId == skill.Id).Description)" />
+                             }
+                             else
+                             {
+                                 <input name='Scores[@(i)].Description' type='text' value=''/>
+                             }
+                        <input name='Scores[@(i)].PlayerSRU' type='hidden' value='@(Model.Player.SRU)'/>
+                        <input name='Scores[@(i)].SkillId' type='hidden' value='@(skill.Id)'/>
+
+                        </td>
+                         <tr/>
+                                                                                         
+                        i++;                                                                   
+                    }
+                }
+
+                </tbody>
+            </table>
+            
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-2">
+                    <input type="submit" class="btn btn-primary " id="Save" value="Submit"/>
+                </div>
+            </div>
+       
+
+    </div>
+    
+</div>
+
+</form>

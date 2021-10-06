@@ -1,0 +1,25 @@
+@model DoctorViewModel
+
+<dl class="row">
+    <dt class="col-sm-3">
+        <label>Doctor name</label>
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.Name)
+        @Html.DisplayFor(model => model.Surname)
+    </dd>
+        
+</dl>
+
+
+<div class="card mt-3">
+        <div class="card-body">
+            <dl class="row">
+           
+                <dd class="col-sm-9">
+                    
+                    @Html.DisplayFor(model => model.Address, "~/Views/Partial/Display/Address.cshtml")
+                </dd>
+            </dl>
+        </div>
+    </div>

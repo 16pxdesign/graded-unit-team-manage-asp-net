@@ -1,0 +1,36 @@
+@model object
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Member management</h5>
+                <p class="card-text">The management page of club members and their personal data.</p>
+                <a asp-controller="Member" asp-action="Index" class="btn btn-primary">Go there</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Player ratings</h5>
+                <p class="card-text">Here you evaluate each player and his skills</p>
+                <a asp-controller="Profile" asp-action="Index" class="btn btn-primary">Go there</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Training history</h5>
+                <p class="card-text">List of all trainings, attendance and completed exercises</p>
+                <a asp-controller="Training" asp-action="Index" class="btn btn-primary">Go there</a>
+            </div>
+        </div>
+    </div>
+</div>

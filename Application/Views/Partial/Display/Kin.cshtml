@@ -1,0 +1,42 @@
+@model KinViewModel
+
+<dl class="row">
+    <dt class="col-sm-3">
+        <label>Full Name</label>
+    </dt>
+    <dd class="col-sm-9">
+       @Model.Name @Model.Surname
+    </dd>
+</dl>
+
+<dl class="row">
+    <dt class="col-sm-3">
+        @Html.LabelFor(m => m.Phone)
+    </dt>
+    <dd class="col-sm-9">
+                    
+        @Html.DisplayFor(model => model.Phone)
+    </dd>
+</dl>
+
+<dl class="row">
+    <dt class="col-sm-3">
+        @Html.LabelFor(m => m.Relationship)
+    </dt>
+    <dd class="col-sm-9">
+                    
+        @Html.DisplayFor(model => model.Relationship)
+    </dd>
+</dl>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <dl class="row">
+           
+            <dd class="col-sm-9">
+                    
+                @Html.DisplayFor(model => model.Address, "~/Views/Partial/Display/Address.cshtml")
+            </dd>
+        </dl>
+    </div>
+</div>

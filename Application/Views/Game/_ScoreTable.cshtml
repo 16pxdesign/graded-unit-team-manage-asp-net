@@ -1,0 +1,48 @@
+@model GameViewModel
+
+ <table id="ScoresTable" class="table mt-1" data-url="@Url.Action("ModalFillTable")">
+        <thead>
+        <tr>
+            <th>Half</th>
+            <th>Time</th>
+            <th>Team</th>
+            <th>Points</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @for (var i = 0; i < Model.Scores.Count; i++)
+        {
+            <tr>
+                <input name='Scores[@(i)].Id' type='hidden' value='@Model.Scores[i].Id'/>
+                
+                <td><input name='Scores[@(i)].Half' type='hidden' value='@Model.Scores[i].Half'/>@Model.Scores[i].Half</td>
+                <td><input name='Scores[@(i)].Time' type='hidden' value='@Model.Scores[i].Time'/>@Model.Scores[i].Time.ToString("t")</td>
+                <td><input name='Scores[@(i)].Team' type='hidden' value='@Model.Scores[i].Team'/>@Model.Scores[i].Team</td>
+                <td><input name='Scores[@(i)].Points' type='hidden' value='@Model.Scores[i].Points'/>@Model.Scores[i].Points</td>
+                
+            
+                
+
+                <!-- Buttons -->
+
+                <td>
+                    <button type="button" id="Scores[@(i)]_editBtn" class="btn btn-link" data-toggle="ajax-modal" data-url="@Url.Action("AddScore", new {id = i})">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </td>
+                <td>
+                    <button data-deleteid="@(i)" class='btn btn-link text-danger' data-toggle="ScoresDelete" data-url="@Url.Action("DeleteScore")">
+                        <i class='fas fa-trash-alt'></i>
+                    </button>
+                </td>
+            </tr>
+            
+            if (Model.Scores[i].Comment != null)
+             {
+             <tr><td colspan="4"><input name='Scores[@(i)].Comment' type='hidden' value='@Model.Scores[i].Comment'/>@Model.Scores[i].Comment</td></tr>
+             }
+        }
+
+        </tbody></table>

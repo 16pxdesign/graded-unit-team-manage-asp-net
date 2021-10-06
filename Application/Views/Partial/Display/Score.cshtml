@@ -1,0 +1,50 @@
+@model List<ScoreViewModel>
+
+
+<div class="card mt-3">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+             
+
+                @if (Model != null && Model.Count > 0)
+                {
+                    <p>
+                        Scores
+                    </p>
+                    <table class="table mt-1">
+                        <thead>
+                        <tr>
+                            <th scope="col">@Html.DisplayNameFor(x => x[0].Half)</th>
+                            <th scope="col">@Html.DisplayNameFor(x => x[0].Time)</th>
+                            <th scope="col">@Html.DisplayNameFor(x => x[0].Team)</th>
+                            <th scope="col">@Html.DisplayNameFor(x => x[0].Points)</th>
+                            <th scope="col">@Html.DisplayNameFor(x => x[0].Comment)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(x => x[i].Half)</td>
+                                <td>@Html.DisplayFor(x => x[i].Time)</td>
+                                <td>@Html.DisplayFor(x => x[i].Team)</td>
+                                <td>@Html.DisplayFor(x => x[i].Points)</td>
+                                <td>@Html.DisplayFor(x => x[i].Comment)</td>
+
+                            </tr>
+                        }
+
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    @("No scores")
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

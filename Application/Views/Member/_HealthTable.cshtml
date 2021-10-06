@@ -1,0 +1,34 @@
+@model PlayerViewModel
+
+<table id="HealthTable" class="table mt-1" data-url="@Url.Action("ModalFillTable")">
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+  
+  
+  
+    
+    @for (var i = 0; i < Model.HealthIssues.Count; i++)
+    {
+        <tr>
+            <input name='Player.HealthIssues[@(i)].Id' type='hidden' value='@Model.HealthIssues[i].Id'/>
+            <td><input name='Player.HealthIssues[@(i)].Date' type='hidden' value='@Model.HealthIssues[i].Date'/>@Model.HealthIssues[i].Date.ToString("dd/MM/yyyy")</td>
+            <td><input name='Player.HealthIssues[@(i)].Name' type='hidden' value='@Model.HealthIssues[i].Name'/>@Model.HealthIssues[i].Name</td>
+            <td style='display: none'><textarea hidden  name='Player.HealthIssues[@(i)].Description' >@Model.HealthIssues[i].Description</textarea></td>
+
+            <!-- Buttons -->
+
+            <td><button type="button" id="HealthIssues[@(i)]_editBtn" class="btn btn-link" data-toggle="ajax-modal" data-url="@Url.Action("AddHealth", new {id = i})"><i class="fas fa-edit"></i></button></td>
+            <td><button data-deleteid="@(i)" class='btn btn-link text-danger' data-toggle="HealthDelete" data-url="@Url.Action("DeleteHealth", "Member")"><i class='fas fa-trash-alt'></i></button></td>
+        </tr>
+    }
+    
+    
+    </tbody>
+</table>

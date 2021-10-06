@@ -1,0 +1,22 @@
+@model Application.Models.TrainingViewModel
+
+
+<div class="card mt-4">
+    <div class="card-body">
+
+        @Html.Label("Activities")
+        <br/>
+        <button type="button" class="btn btn-link" data-toggle="ajax-modal" data-url="@Url.Action("AddActivity")" ><i class="fas fa-plus"></i>  Add</button>
+
+  
+        <!-- Contacts table -->
+        @await Html.PartialAsync("_ActivitiesTable", Model)
+   
+        
+      
+
+
+    </div>
+</div>
+
+<script src="~/js/modal-activity.js" asp-append-version="true" defer></script>

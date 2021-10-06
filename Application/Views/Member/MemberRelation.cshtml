@@ -1,0 +1,12 @@
+@model Exception
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Can not delete</h2>
+
+@Model.Message
+
+<a class="btn btn-link" asp-controller="Member" asp-action="Index">Ok</a>

@@ -1,0 +1,10 @@
+@model GameViewModel
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+
+@await Html.PartialAsync("~/Views/Partial/Display/Game.cshtml",Model)
+@await Html.PartialAsync("~/Views/Partial/Display/Score.cshtml",Model.Scores.OrderBy(x=>x.Time).ToList())
+

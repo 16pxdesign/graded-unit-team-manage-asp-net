@@ -1,0 +1,64 @@
+@model Application.Models.TrainingViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<a class="btn btn-link" asp-controller="Training" asp-action="Index">< Back to list</a>
+<br/>
+
+
+<div class="card mt-3">
+
+    <div class="card-body">
+        <dl class="row">
+
+            <dd class="col text-center">
+                <label>Training Details</label>
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">
+                <label>@Model.Date.ToString(string.Format("dd/MM/yyyy"))</label>
+            </dt>
+            <dd class="col-sm-2">
+                <label>@Model.Time.ToString(string.Format("HH:mm"))</label>
+            </dd>
+            <dd class="col-sm-4">
+                <label>@Model.Coach.Fullname</label>
+            </dd>
+            <dd class="col-sm-4">
+                <label>@Model.Location</label>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.LabelFor(m => m.Activities)
+            </dt>
+            <dd class="col-sm-9">
+                    
+                @Html.DisplayFor(m => m.Activities, "~/Views/Partial/Display/Activities.cshtml")
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.Label("Attendance")
+            </dt>
+            <dd class="col-sm-9">
+                    
+                @Html.DisplayFor(m => m.Attendance, "~/Views/Partial/Display/Attendance.cshtml")
+            </dd>
+        </dl>
+    </div>
+</div>

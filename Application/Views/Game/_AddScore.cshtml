@@ -1,0 +1,66 @@
+@using Application.Data.Models
+@model ScoreViewModel
+
+<!-- Modal -->
+<div class="modal fade" id="ScoreForm" tabindex="-1" role="dialog" aria-labelledby="Score" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addContactLabel">Add Score</h5> 
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+                <form id="add-Score-form" asp-action="AddScore" enctype="multipart/form-data" onsubmit="event.preventDefault();">
+                    
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()"/>
+                  
+                    
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Time"></label>
+                            <input asp-for="Time" class="form-control"/>
+                            <span asp-validation-for="Time" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Half"></label>
+                            <select asp-for="Half" asp-items="Html.GetEnumSelectList<GameHalf>()" class="form-control"></select>
+                            <span asp-validation-for="Half" class="text-danger"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Team"></label>
+                            <select asp-for="Team" asp-items="Html.GetEnumSelectList<GameTeam>()" class="form-control"></select>
+                            <span asp-validation-for="Team" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Points"></label>
+                            <input asp-for="Points" class="form-control" min="0"/>
+                            <span asp-validation-for="Points" class="text-danger"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Comment"></label>
+                        <textarea asp-for="Comment" class="form-control" min="0"></textarea>
+                        <span asp-validation-for="Comment" class="text-danger"></span>
+                    </div>
+                    </div>
+                    
+      
+
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal-Score">Close</button>
+                <button type="button" class="btn btn-primary"  data-save="modal-Score">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

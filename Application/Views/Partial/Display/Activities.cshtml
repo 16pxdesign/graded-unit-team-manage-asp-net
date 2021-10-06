@@ -1,0 +1,23 @@
+@model List<Application.Models.ActivitiesViewModel>
+
+@if (Model != null && Model.Count > 0)
+{
+    <div class="card mt-3">
+        <div class="card-body">
+            @foreach (var item in Model)
+            {
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        <label>@item.Name</label>
+                    </dt>
+
+                </dl>
+            }
+        </div>
+    </div>
+
+}
+else
+{
+    @("No Activities overtaken")
+}

@@ -1,0 +1,17 @@
+@model Application.Models.TrainingViewModel
+
+<div class="card mt-4">
+    <div class="card-body">
+
+        @Html.Label("Attendance")
+        @if (ViewBag.PlayerList != null)
+        {
+            @Html.ListBoxFor(x => x.Attended, new MultiSelectList(ViewBag.PlayerList, "SRU", "Fullname", Model.Attended), new {@class = "multiselect", multiple = "multiple"})
+        }
+        else
+        {
+            @("No players to select")
+        }
+
+    </div>
+</div>

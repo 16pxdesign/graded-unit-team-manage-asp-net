@@ -1,0 +1,122 @@
+@using Application.Data.Models
+@model MemberViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>@Model.SRU - @Model.Name @Model.Surname</h2>
+
+<a class="btn btn-link" asp-controller="Member" asp-action="Index">< Back to list</a>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.LabelFor(m=>m)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model,"~/Views/Partial/Display/Member.cshtml")
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.LabelFor(m=>m.Address)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Address,"~/Views/Partial/Display/Address.cshtml")
+            </dd>
+        </dl>
+    </div>
+</div>
+
+@if (Model.Type != MemberType.Member)
+{
+    <div class="card mt-3">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.LabelFor(m => m.Player)
+                </dt>
+                <dd class="col-sm-9">
+                    
+                    @Html.DisplayFor(model => model.Player, "~/Views/Partial/Display/Player.cshtml")
+                </dd>
+            </dl>
+        </div>
+    </div>
+    
+    
+    <div class="card mt-3">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.LabelFor(m => m.Player.Doctor)
+                </dt>
+                <dd class="col-sm-9">
+                    
+                    @Html.DisplayFor(model => model.Player.Doctor, "~/Views/Partial/Display/Doctor.cshtml")
+                </dd>
+            </dl>
+        </div>
+    </div>
+    
+    <div class="card mt-3">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.LabelFor(m => m.Player.HealthIssues)
+                </dt>
+                <dd class="col-sm-9">
+                    
+                    @Html.DisplayFor(model => model.Player.HealthIssues, "~/Views/Partial/Display/HealthIssues.cshtml")
+                </dd>
+            </dl>
+        </div>
+    </div>
+}
+
+@if (Model.Type == MemberType.Senior)
+{
+    
+    <div class="card mt-3">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.LabelFor(m => m.Player.Senior.Kin)
+                </dt>
+                <dd class="col-sm-9">
+                    
+                    @Html.DisplayFor(model => model.Player.Senior.Kin, "~/Views/Partial/Display/Kin.cshtml")
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+}
+
+@if (Model.Type == MemberType.Junior)
+{
+    
+    <div class="card mt-3">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.LabelFor(m => m.Player.Junior.Guardians)
+                </dt>
+                <dd class="col-sm-9">
+                    
+                    @Html.DisplayFor(model => model.Player.Junior.Guardians, "~/Views/Partial/Display/Guardians.cshtml")
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+}
+

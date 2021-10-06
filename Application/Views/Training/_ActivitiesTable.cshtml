@@ -1,0 +1,37 @@
+@model Application.Models.TrainingViewModel
+
+<table id="ActivitiesesTable" class="table mt-1" data-url="@Url.Action("ModalFillTable")">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    @for (var i = 0; i < Model.Activities.Count; i++)
+    {
+        <tr>
+
+            <td>
+                <input name='Activities[@(i)].Name' type='hidden' value='@Model.Activities[i].Name'/>@Model.Activities[i].Name</td>
+
+            <!-- Buttons -->
+
+            <td>
+                <button type="button" id="Activities[@(i)]_editBtn" class="btn btn-link" data-toggle="ajax-modal" data-url="@Url.Action("AddActivity", new {id = i})">
+                    <i class="fas fa-edit"></i>
+                </button>
+            </td>
+            <td>
+                <button data-deleteid="@(i)" class='btn btn-link text-danger' data-toggle="ActivityDelete" data-url="@Url.Action("DeleteActivity")">
+                    <i class='fas fa-trash-alt'></i>
+                </button>
+            </td>
+        </tr>
+    }
+
+
+    </tbody>
+</table>

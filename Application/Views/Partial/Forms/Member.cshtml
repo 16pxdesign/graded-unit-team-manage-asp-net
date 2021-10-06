@@ -1,0 +1,92 @@
+
+@using Application.Data.Models
+@model MemberViewModel
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h3 >Member details</h3>
+        <hr/>
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        @{
+            var edit = false;
+            if (TempData["EditMember"] != null)
+            {
+                edit = (bool) TempData["EditMember"];
+                TempData["EditMember"] = edit;
+
+            }
+        }
+        @if(Model.SRU==null || !edit ){
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="SRU"  ></label>
+                    <input asp-for="SRU" class="form-control" />
+                    <span asp-validation-for="SRU" class="text-danger"></span>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="SRU"  ></label>
+                    <input asp-for="SRU" type="hidden" class="form-control" />
+                    <br/><strong>@Model.SRU</strong>
+                    <span asp-validation-for="SRU" class="text-danger"></span>
+                </div>
+            </div>
+        }
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Type"  ></label>
+                <select id="player-type" asp-for="Type" asp-items="Html.GetEnumSelectList<MemberType>()" class="form-control"></select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6" id="player-position">
+                <label asp-for="Player.Position"  ></label>
+                <select asp-for="Player.Position" asp-items="Html.GetEnumSelectList<PlayerPosition>()" class="form-control"></select>
+                <span asp-validation-for="Player.Position" class="text-danger"></span>
+            </div>
+        </div>
+                
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="Surname" ></label>
+                <input asp-for="Surname" class="form-control" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email" ></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+          
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label asp-for="Phone" ></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="Mobile" ></label>
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+        </div>
+
+              
+    </div>
+</div>

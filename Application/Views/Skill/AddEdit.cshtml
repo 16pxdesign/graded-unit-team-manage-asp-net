@@ -1,0 +1,67 @@
+@using Application.Data.Models
+@model SkillViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="card">
+    <div class="card-title text-center mt-4">
+        <h4 class="">Skill list</h4>
+    </div>
+    <div class="card-body">
+
+        <form method="post">
+            <div asp-validation-summary="All">
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control"/>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Type"></label>
+                    <select id="type" asp-for="Type" asp-items="Html.GetEnumSelectList<SkillType>()" class="form-control"></select>
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>
+                <div id="list" class="form-group col-md-6">
+                    @Html.Label("Categories")
+                    @if (Model.Categories != null && Model.Categories.Any())
+                    {
+                        @Html.DropDownListFor(x => x.ParentId, new SelectList(Model.Categories, "Id", "Name", Model.Parent), new {@class = "form-control"})
+                    }
+                    else
+                    {
+                        @("No any to select")
+                    }
+                </div>
+            </div>
+
+
+            <div class="form-row mt-4">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-2">
+                        <input type="submit" class="btn btn-primary " value="Submit" id="Save"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-2">
+                        <a class="btn btn-link" asp-controller="Skill" asp-action="Index">Cancel</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+
+    </div>
+</div>
+
+<script src="~/js/onCategoryType.js" asp-append-version="true"></script>

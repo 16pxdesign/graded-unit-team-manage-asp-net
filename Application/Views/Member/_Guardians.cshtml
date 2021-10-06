@@ -1,0 +1,23 @@
+@model JuniorViewModel
+
+
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h3 >Guardians</h3>
+        <hr/>
+
+        <button type="button" class="btn btn-link" data-toggle="ajax-modal" data-url="@Url.Action("AddGuardian")" ><i class="fas fa-plus"></i>  Add</button>
+
+  
+            <!-- Contacts table -->
+            @await Html.PartialAsync("_GuardianTable", Model)
+   
+        
+      
+
+
+    </div>
+</div>
+
+<script src="~/js/modal-member-guardian.js" asp-append-version="true" defer></script>

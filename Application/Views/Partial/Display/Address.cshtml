@@ -1,0 +1,50 @@
+@model AddressViewModel
+
+<dl class="row">
+    <dt class="col-sm-3">
+        @Html.LabelFor(m=>m.Flat)
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.Flat)
+    </dd>
+        
+ 
+</dl>
+
+
+<dl class="row">
+    <dt class="col-sm-3">
+        @Html.LabelFor(m=>m.Street)
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.Street)
+    </dd>
+        
+ 
+</dl>
+
+
+
+<dl class="row">
+    <dt class="col-sm-3">
+        @Html.LabelFor(m=>m.City)
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.City)
+    </dd>
+        
+ 
+</dl>
+
+
+
+<dl class="row">
+    <dt class="col-sm-3">
+        @Html.LabelFor(m=>m.Postcode)
+    </dt>
+    <dd class="col-sm-9">
+        @Html.DisplayFor(model => model.Postcode)
+    </dd>
+        
+ 
+</dl>
