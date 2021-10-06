@@ -1,0 +1,11 @@
+In some cases controllers method not handle nullpointexception error if user can manually enter Controler/Edit/3 and this item not exist in database
+
+Address table needs to manually set the procedure that will delete addres if his child is deleted
+
+If there is no members training can be created with no coach that will crash training section in future so need to create members then use traing [just not handle this at this stage]
+
+At the beginning of the skill can be created without a category if it does not exist. It will cause that skills will not be displayed in the evaluation page.
+
+The user's type can be changed, if user is assigned to the training as a player in attendace list. [handled by massege]
+
+The user's cannot be deleted if user assigned to the training as a player or coach [handled by massege]
